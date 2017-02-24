@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.CourseInfoActivity"></activity>
+        <activity android:name=".activities.GameInfoActivity"></activity>
     </application>
 
 </manifest>

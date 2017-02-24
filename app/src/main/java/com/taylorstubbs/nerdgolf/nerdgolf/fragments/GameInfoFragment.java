@@ -12,16 +12,16 @@ import com.taylorstubbs.nerdgolf.nerdgolf.R;
  * Created by taylorstubbs on 2/24/17.
  */
 
-public class CourseInfoFragment extends Fragment {
-    private static final String TAG = "CourseInfoFragment";
+public class GameInfoFragment extends Fragment {
+    private static final String TAG = "GameInfoFragment";
 
-    public static CourseInfoFragment newInstance() {
-        return new CourseInfoFragment();
+    public static GameInfoFragment newInstance() {
+        return new GameInfoFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveState) {
-        View view = inflater.inflate(R.layout.fragment_info_course, container, false);
+        View view = inflater.inflate(R.layout.fragment_info_game, container, false);
 
         return view;
     }

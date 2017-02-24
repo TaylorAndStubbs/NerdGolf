@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
-import com.taylorstubbs.nerdgolf.nerdgolf.activities.CourseInfoActivity;
+import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameInfoActivity;
 
 /**
  * Created by taylorstubbs on 2/24/17.
@@ -33,7 +33,7 @@ public class MainFragment extends Fragment {
         mNewGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent courseInfoActivityIntent = new Intent(getActivity(), CourseInfoActivity.class);
+                Intent courseInfoActivityIntent = new Intent(getActivity(), GameInfoActivity.class);
                 getActivity().startActivity(courseInfoActivityIntent);
             }
         });
