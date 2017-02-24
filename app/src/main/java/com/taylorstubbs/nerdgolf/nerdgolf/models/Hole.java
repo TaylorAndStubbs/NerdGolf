@@ -17,4 +17,20 @@ public class Hole extends SugarRecord {
     public Hole(int hNum) {
         holeNum = hNum;
     }
+
+    public int getHoleNum() {
+        return holeNum;
+    }
+
+    public void setHoleNum(int holeNum) {
+        this.holeNum = holeNum;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }

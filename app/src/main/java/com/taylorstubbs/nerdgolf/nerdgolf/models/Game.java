@@ -24,4 +24,28 @@ public class Game extends SugarRecord {
         courseName = cName;
         totalHoleNumber = tHoleNumber;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public int getTotalHoleNumber() {
+        return totalHoleNumber;
+    }
+
+    public ArrayList<Hole> getHoles() {
+        return holes;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public void setTotalHoleNumber(int totalHoleNumber) {
+        this.totalHoleNumber = totalHoleNumber;
+    }
 }
