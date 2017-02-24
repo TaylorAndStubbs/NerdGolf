@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
 import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameInfoActivity;
+import com.taylorstubbs.nerdgolf.nerdgolf.activities.RecordsActivity;
 
 /**
  * Created by taylorstubbs on 2/24/17.
@@ -19,6 +20,7 @@ public class MainFragment extends Fragment {
     private static final String TAG = "MainFragment";
 
     private Button mNewGameButton;
+    private Button mRecordsbutton;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -29,6 +31,15 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         mNewGameButton = (Button) view.findViewById(R.id.new_game_button);
+        mRecordsbutton = (Button) view.findViewById(R.id.records_button);
+
+        mRecordsbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent recordsActivityIntent = new Intent(getActivity(), RecordsActivity.class);
+                getActivity().startActivity(recordsActivityIntent);
+            }
+        });
 
         mNewGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
