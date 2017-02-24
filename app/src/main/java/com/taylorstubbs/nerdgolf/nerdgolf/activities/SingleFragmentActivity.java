@@ -1,11 +1,11 @@
-package taylorstubbs.com.nerdgolf.activities;
+package com.taylorstubbs.nerdgolf.nerdgolf.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-import taylorstubbs.com.nerdgolf.R;
+import com.taylorstubbs.nerdgolf.nerdgolf.R;
 
 /**
  * Created by taylorstubbs on 2/23/17.

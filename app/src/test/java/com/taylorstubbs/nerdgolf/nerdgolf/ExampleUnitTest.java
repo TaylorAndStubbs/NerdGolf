@@ -1,4 +1,4 @@
-package taylorstubbs.com.nerdgolf;
+package com.taylorstubbs.nerdgolf.nerdgolf;
 
 import org.junit.Test;
 

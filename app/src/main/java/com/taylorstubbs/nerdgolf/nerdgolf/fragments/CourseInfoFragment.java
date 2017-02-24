@@ -1,4 +1,4 @@
-package taylorstubbs.com.nerdgolf.fragments;
+package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import taylorstubbs.com.nerdgolf.R;
+import com.taylorstubbs.nerdgolf.nerdgolf.R;
 
 /**
  * Created by taylorstubbs on 2/24/17.

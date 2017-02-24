@@ -1,8 +1,8 @@
-package taylorstubbs.com.nerdgolf.activities;
+package com.taylorstubbs.nerdgolf.nerdgolf.activities;
 
 import android.support.v4.app.Fragment;
 
-import taylorstubbs.com.nerdgolf.fragments.MainFragment;
+import com.taylorstubbs.nerdgolf.nerdgolf.fragments.MainFragment;
 
 /**
  * Created by taylorstubbs on 2/24/17.
