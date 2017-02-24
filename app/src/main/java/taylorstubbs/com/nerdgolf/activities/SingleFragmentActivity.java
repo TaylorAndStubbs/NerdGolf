@@ -12,6 +12,7 @@ import taylorstubbs.com.nerdgolf.R;
  */
 
 public abstract class SingleFragmentActivity extends FragmentActivity {
+    private static final String TAG = "SingleFragmentActivity";
     protected abstract Fragment createFragment();
 
     protected int getLayoutResId() {
@@ -24,12 +25,12 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
         setContentView(getLayoutResId());
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = fragmentManager.findFragmentById(R.id.fragmentContainer);
+        Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
 
         if (fragment == null) {
             fragment = createFragment();
             fragmentManager.beginTransaction()
-                    .add(R.id.fragmentContainer, fragment)
+                    .add(R.id.fragment_container, fragment)
                     .commit();
         }
     }
