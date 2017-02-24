@@ -2,4 +2,8 @@
     <string name="app_name">NerdGolf</string>
     <string name="new_game_button_label">New Game</string>
     <string name="records_button_label">Records</string>
+    <string name="course_name_hint">Course Name</string>
+    <string name="total_number_holes_label"># of Holes</string>
+    <string name="cancel_button_label">Cancel</string>
+    <string name="start_game_button_label">Start</string>
 </resources>
