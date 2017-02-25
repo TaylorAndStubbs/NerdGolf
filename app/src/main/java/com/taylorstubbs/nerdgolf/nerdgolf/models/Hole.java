@@ -9,6 +9,7 @@ import com.orm.SugarRecord;
 public class Hole extends SugarRecord {
     int holeNum;
     int score;
+    int par;
 
     public Hole() {
         //has to be empty
@@ -32,5 +33,13 @@ public class Hole extends SugarRecord {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getPar() {
+        return par;
+    }
+
+    public void setPar(int par) {
+        this.par = par;
     }
 }
