@@ -20,6 +20,7 @@ public class Game extends SugarRecord {
     }
 
     public Game(String cName, int tHoleNumber) {
+        holes = new ArrayList<>();
         date = new Date();
         courseName = cName;
         totalHoleNumber = tHoleNumber;

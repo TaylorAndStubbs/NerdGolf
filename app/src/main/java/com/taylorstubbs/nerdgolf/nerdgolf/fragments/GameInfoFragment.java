@@ -14,6 +14,7 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
+import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 
 /**
  * Created by taylorstubbs on 2/24/17.
@@ -75,7 +76,8 @@ public class GameInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validateGameInfo(mCourseName)) {
-                    Toast.makeText(getContext(), mCourseName + mTotalNumberHoles, Toast.LENGTH_SHORT).show();
+                    Game game = new Game(mCourseName, mTotalNumberHoles);
+                    game.save();
                 } else {
                     Toast.makeText(getContext(), "Course Name cannot be blank.", Toast.LENGTH_LONG)
                             .show();
@@ -103,9 +105,8 @@ public class GameInfoFragment extends Fragment {
     /**
      * Checks if information is incomplete.
      *
-     * @param courseName        the name of the course.
-     *
-     * @return whether or not the info is valid.
+     * @param courseName the name of the course
+     * @return whether or not the info is valid
      */
     private boolean validateGameInfo(String courseName) {
         return courseName != null && !courseName.isEmpty();
@@ -114,7 +115,7 @@ public class GameInfoFragment extends Fragment {
     /**
      * Create the number picker.
      *
-     * @param numberPicker a NumberPicker;
+     * @param numberPicker a NumberPicker
      */
     private void initNumberPicker(NumberPicker numberPicker) {
         numberPicker.setMaxValue(18);
