@@ -10,6 +10,7 @@ import java.util.Date;
  */
 
 public class Game extends SugarRecord {
+    Boolean inProgress;
     Date date;
     String courseName;
     int totalHoleNumber;
@@ -20,6 +21,7 @@ public class Game extends SugarRecord {
     }
 
     public Game(String cName, int tHoleNumber) {
+        inProgress = true;
         holes = new ArrayList<>();
         date = new Date();
         courseName = cName;
