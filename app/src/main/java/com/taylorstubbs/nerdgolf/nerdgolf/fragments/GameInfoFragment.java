@@ -1,5 +1,6 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,7 @@ import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
+import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameActivity;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 
 /**
@@ -78,6 +80,8 @@ public class GameInfoFragment extends Fragment {
                 if (validateGameInfo(mCourseName)) {
                     Game game = new Game(mCourseName, mTotalNumberHoles);
                     game.save();
+
+                    getActivity().startActivity(GameActivity.createIntent(getActivity(), game.getDate()));
                 } else {
                     Toast.makeText(getContext(), "Course Name cannot be blank.", Toast.LENGTH_LONG)
                             .show();
