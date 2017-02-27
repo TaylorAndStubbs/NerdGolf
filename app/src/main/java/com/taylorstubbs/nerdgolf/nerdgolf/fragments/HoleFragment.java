@@ -12,6 +12,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
+import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Hole;
 import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
@@ -28,6 +29,7 @@ public class HoleFragment extends Fragment {
 
     private HoleFragmentCallbacks mCallbacks;
     private Hole mHole;
+    private Game mGame;
 
     private TextView mHoleNumberView;
     private NumberPicker mParView;
@@ -56,18 +58,11 @@ public class HoleFragment extends Fragment {
         void finishGame();
 
         /**
-         * Go to next hole.
+         * Go to hole.
          *
          * @param holeNum   the hole number
          */
-        void nextHole(int holeNum);
-
-        /**
-         * Go to previous hole.
-         *
-         * @param holeNum   the hole number
-         */
-        void prevHole(int holeNum);
+        void goToHole(int holeNum);
     }
 
     @Override
@@ -75,6 +70,7 @@ public class HoleFragment extends Fragment {
         super.onCreate(saveState);
 
         mHole = SQLUtil.getHoleFromId(getArguments().getLong(ARG_HOLE_ID));
+        mGame = SQLUtil.getGameFromId(mHole.getGame());
 
         if (saveState != null) {
             mHole.setScore(saveState.getInt(STATE_SCORE));
@@ -109,20 +105,30 @@ public class HoleFragment extends Fragment {
         mNextHoleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallbacks.nextHole(mHole.getHoleNum());
+                if (mHole.getHoleNum() < mGame.getTotalHoleNumber() - 1) {
+                    mHole.save();
+                    mCallbacks.goToHole(mHole.getHoleNum() + 1);
+                } else {
+                    //TODO
+                }
+
             }
         });
 
         mPrevHoleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallbacks.prevHole(mHole.getHoleNum());
+                if (mHole.getHoleNum() > 0) {
+                    mHole.save();
+                    mCallbacks.goToHole(mHole.getHoleNum() - 1);
+                }
             }
         });
 
         mFinishGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mHole.save();
                 mCallbacks.finishGame();
             }
         });
@@ -138,8 +144,10 @@ public class HoleFragment extends Fragment {
         mDecreaseScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHole.decreaseScore();
-                updateHoleInfo();
+                if (mHole.getScore() > 0) {
+                    mHole.decreaseScore();
+                    updateHoleInfo();
+                }
             }
         });
 
