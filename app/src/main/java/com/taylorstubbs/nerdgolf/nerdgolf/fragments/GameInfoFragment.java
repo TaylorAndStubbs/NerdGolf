@@ -1,9 +1,7 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -24,7 +22,7 @@ import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 
 public class GameInfoFragment extends Fragment {
     private static final String TAG = "GameInfoFragment";
-    private static final String KEY_TOTAL_NUMBER_HOLES = "totalNumberHoles";
+    private static final String STATE_TOTAL_NUMBER_HOLES = "totalNumberHoles";
 
     private String mCourseName;
     private int mTotalNumberHoles = 1;
@@ -44,7 +42,7 @@ public class GameInfoFragment extends Fragment {
         super.onCreate(saveState);
 
         if (saveState != null) {
-            mTotalNumberHoles = saveState.getInt(KEY_TOTAL_NUMBER_HOLES);
+            mTotalNumberHoles = saveState.getInt(STATE_TOTAL_NUMBER_HOLES);
         }
     }
 
@@ -103,7 +101,7 @@ public class GameInfoFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle saveState) {
-        saveState.putInt(KEY_TOTAL_NUMBER_HOLES, mTotalNumberHoles);
+        saveState.putInt(STATE_TOTAL_NUMBER_HOLES, mTotalNumberHoles);
     }
 
     /**

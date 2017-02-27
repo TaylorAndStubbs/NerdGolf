@@ -10,4 +10,6 @@
     <string name="next_hole_button_label">Next</string>
     <string name="prev_hole_button_label">Prev</string>
     <string name="finish_game_button_label">Finish</string>
+    <string name="increase_score_button_label">Increase</string>
+    <string name="decrease_score_button_label">Decrease</string>
 </resources>

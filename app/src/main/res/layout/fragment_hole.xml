@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         tools:text="14"/>
 
-    <TextView
+    <NumberPicker
         android:id="@+id/par"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +21,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="3"/>
+
+    <Button
+        android:id="@+id/increase_score_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/increase_score_button_label"/>
+
+    <Button
+        android:id="@+id/decrease_score_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/decrease_score_button_label"/>
+
 
     <Button
         android:id="@+id/next_hole_button"
