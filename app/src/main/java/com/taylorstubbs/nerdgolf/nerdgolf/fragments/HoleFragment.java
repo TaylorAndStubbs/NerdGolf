@@ -1,5 +1,7 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,13 +14,15 @@ import com.taylorstubbs.nerdgolf.nerdgolf.models.Hole;
 import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
 /**
- * Created by taylorstubbs on 2/25/17.
+ * Individual hole. User can set score, par, and navigate back and forth through the holes. User can
+ * also finish the game.
  */
 
 public class HoleFragment extends Fragment {
     private static final String TAG = "HoleFragment";
     private static final String ARG_HOLE_ID = "holeId";
 
+    private HoleFragmentCallbacks mCallbacks;
     private Hole mHole;
 
     private TextView mHoleNumberView;
@@ -33,11 +37,46 @@ public class HoleFragment extends Fragment {
         return holeFragment;
     }
 
+    /**
+     * Interface for HoleFragment to communicate with GameActivity.
+     */
+    public interface HoleFragmentCallbacks {
+        /**
+         * Finish the game.
+         */
+        void finishGame();
+
+        /**
+         * Go to next hole.
+         *
+         * @param holeNum   the hole number
+         */
+        void nextHole(int holeNum);
+
+        /**
+         * Go to previous hole.
+         *
+         * @param holeNum   the hole number
+         */
+        void prevHole(int holeNum);
+    }
+
     @Override
     public void onCreate(Bundle saveState) {
         super.onCreate(saveState);
 
         mHole = SQLUtil.getHoleFromId(getArguments().getLong(ARG_HOLE_ID));
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (!(context instanceof HoleFragmentCallbacks)) {
+            throw new IllegalStateException("Activity must implement HoleFragmentCallbacks");
+        }
+
+        mCallbacks = (HoleFragmentCallbacks) context;
     }
 
     @Override

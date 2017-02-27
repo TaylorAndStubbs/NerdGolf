@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by taylorstubbs on 2/26/17.
+ * Util for working with dates.
  */
 
 public enum DateUtil {;

@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentManager;
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
 
 /**
- * Created by taylorstubbs on 2/23/17.
+ * Hosts a single fragment.
  */
 
 public abstract class SingleFragmentActivity extends FragmentActivity {

@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by taylorstubbs on 2/24/17.
+ * The game object.
  */
 
 public class Game extends SugarRecord {
@@ -55,10 +55,6 @@ public class Game extends SugarRecord {
         return totalHoleNumber;
     }
 
-    public List<Hole> getHoles() {
-        return Select.from(Hole.class).where(Condition.prop("game").eq(getId())).list();
-    }
-
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
@@ -73,6 +69,10 @@ public class Game extends SugarRecord {
 
     public void setInProgress(Boolean inProgress) {
         this.inProgress = inProgress;
+    }
+
+    public List<Hole> getHoles() {
+        return SQLUtil.getAllHolesFromGame(getId());
     }
 
     public void saveHoles() {

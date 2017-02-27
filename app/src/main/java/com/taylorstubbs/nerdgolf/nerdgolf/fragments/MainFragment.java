@@ -13,7 +13,7 @@ import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameInfoActivity;
 import com.taylorstubbs.nerdgolf.nerdgolf.activities.RecordsActivity;
 
 /**
- * Created by taylorstubbs on 2/24/17.
+ * The opening menu. Users can start a new game or check their records.
  */
 
 public class MainFragment extends Fragment {

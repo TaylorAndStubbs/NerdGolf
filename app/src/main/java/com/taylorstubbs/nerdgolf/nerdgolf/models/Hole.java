@@ -3,7 +3,7 @@ package com.taylorstubbs.nerdgolf.nerdgolf.models;
 import com.orm.SugarRecord;
 
 /**
- * Created by taylorstubbs on 2/24/17.
+ * The hole object.
  */
 
 public class Hole extends SugarRecord {

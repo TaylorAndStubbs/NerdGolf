@@ -2,25 +2,19 @@ package com.taylorstubbs.nerdgolf.nerdgolf.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 
 import com.orm.query.Condition;
 import com.orm.query.Select;
 import com.taylorstubbs.nerdgolf.nerdgolf.fragments.HoleFragment;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
-import com.taylorstubbs.nerdgolf.nerdgolf.models.Hole;
-import com.taylorstubbs.nerdgolf.nerdgolf.utils.DateUtil;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
- * Created by taylorstubbs on 2/25/17.
+ * This class hosts a HoleFragment and acts as the controller for the game. It contains an interface
+ * that the HoleFragment uses to communicate with the GameActivity.
  */
 
-public class GameActivity extends SingleFragmentActivity {
+public class GameActivity extends SingleFragmentActivity implements HoleFragment.HoleFragmentCallbacks {
     private static final String TAG = "GameActivity";
     private static final String EXTRA_GAME_ID = "gameId";
 
@@ -39,30 +33,6 @@ public class GameActivity extends SingleFragmentActivity {
         return intent;
     }
 
-    /**
-     * Interface for HoleFragment to communicate with GameActivity.
-     */
-    public interface GameInterface {
-        /**
-         * Finish the game.
-         */
-        void finishGame();
-
-        /**
-         * Go to next hole.
-         *
-         * @param holeNum   the hole number
-         */
-        void nextHole(int holeNum);
-
-        /**
-         * Go to previous hole.
-         *
-         * @param holeNum   the hole number
-         */
-        void prevHole(int holeNum);
-    }
-
     @Override
     protected Fragment createFragment() {
         Intent intent = getIntent();
@@ -73,5 +43,20 @@ public class GameActivity extends SingleFragmentActivity {
 
         //Create HoleFragment with first hole
         return HoleFragment.newInstance(game.getHoles().get(0));
+    }
+
+    @Override
+    public void finishGame() {
+        //TODO
+    }
+
+    @Override
+    public void nextHole(int holeNum) {
+        //TODO
+    }
+
+    @Override
+    public void prevHole(int holeNum) {
+        //TODO
     }
 }

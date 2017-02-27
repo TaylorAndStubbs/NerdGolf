@@ -19,7 +19,7 @@ import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameActivity;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 
 /**
- * Created by taylorstubbs on 2/24/17.
+ * Creates the game object. User can set course name and number of holes.
  */
 
 public class GameInfoFragment extends Fragment {
