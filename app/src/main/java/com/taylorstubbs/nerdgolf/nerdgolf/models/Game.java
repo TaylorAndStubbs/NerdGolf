@@ -1,13 +1,9 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.models;
 
 import com.orm.SugarRecord;
-import com.orm.query.Condition;
-import com.orm.query.Select;
 import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**

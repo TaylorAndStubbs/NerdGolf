@@ -51,7 +51,11 @@ public class GameActivity extends SingleFragmentActivity implements HoleFragment
 
     @Override
     public void finishGame() {
-        //TODO
+        mGame.setInProgress(false);
+        mGame.save();
+
+        startActivity(MainActivity.newIntent(GameActivity.this));
+        this.finish();
     }
 
     @Override

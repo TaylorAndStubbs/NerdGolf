@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.orm.query.Select;
@@ -42,7 +41,7 @@ public class RecordsFragment extends Fragment {
         });
 
         mRecordsView = (TextView) view.findViewById(R.id.records);
-        mRecordsView.setText(getGames().get(0).toString());
+        mRecordsView.setText(String.valueOf(getGames().get(0).getInProgress()));
 
         return view;
     }

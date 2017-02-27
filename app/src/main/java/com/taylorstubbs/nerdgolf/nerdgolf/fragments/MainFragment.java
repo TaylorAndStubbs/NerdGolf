@@ -3,14 +3,19 @@ package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
+import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameActivity;
 import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameInfoActivity;
+import com.taylorstubbs.nerdgolf.nerdgolf.activities.MainActivity;
 import com.taylorstubbs.nerdgolf.nerdgolf.activities.RecordsActivity;
+import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
+import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
 /**
  * The opening menu. Users can start a new game or check their records.
@@ -24,6 +29,18 @@ public class MainFragment extends Fragment {
 
     public static MainFragment newInstance() {
         return new MainFragment();
+    }
+
+    @Override
+    public void onCreate(Bundle saveState) {
+        super.onCreate(saveState);
+
+        Game game = SQLUtil.getGameInProgress();
+        if (game != null) {
+            startActivity(GameActivity.createIntent(getContext(), game));
+        } else {
+            //TODO
+        }
     }
 
     @Override
