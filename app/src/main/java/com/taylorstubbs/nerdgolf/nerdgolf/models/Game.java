@@ -26,6 +26,15 @@ public class Game extends SugarRecord {
         date = new Date();
         courseName = cName;
         totalHoleNumber = tHoleNumber;
+
+        //Initialize holes
+        for (int i = 0; i < totalHoleNumber; i++) {
+            Hole hole = new Hole(i);
+            holes.add(hole);
+        }
+
+        //Save game
+        this.save();
     }
 
     public Date getDate() {
