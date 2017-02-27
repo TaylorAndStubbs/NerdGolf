@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-import com.taylorstubbs.nerdgolf.nerdgolf.fragments.GameFragment;
+import com.taylorstubbs.nerdgolf.nerdgolf.fragments.HoleFragment;
 
 import java.util.Date;
 
@@ -32,6 +32,6 @@ public class GameActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return GameFragment.newInstance();
+        return HoleFragment.newInstance();
     }
 }
