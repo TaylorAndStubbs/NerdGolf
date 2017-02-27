@@ -10,12 +10,14 @@ public class Hole extends SugarRecord {
     int holeNum;
     int score;
     int par;
+    long game;
 
     public Hole() {
         //has to be empty
     }
 
-    public Hole(int hNum) {
+    public Hole(long gameId, int hNum) {
+        game = gameId;
         holeNum = hNum;
     }
 
@@ -41,5 +43,13 @@ public class Hole extends SugarRecord {
 
     public void setPar(int par) {
         this.par = par;
+    }
+
+    public long getGame() {
+        return game;
+    }
+
+    public void setGame(long game) {
+        this.game = game;
     }
 }

@@ -20,7 +20,7 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
     }
 
     @Override
-    public void onCreate(Bundle saveState) {
+    protected void onCreate(Bundle saveState) {
         super.onCreate(saveState);
         setContentView(getLayoutResId());
 

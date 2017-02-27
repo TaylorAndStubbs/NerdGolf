@@ -81,7 +81,7 @@ public class GameInfoFragment extends Fragment {
                     Game game = new Game(mCourseName, mTotalNumberHoles);
                     game.save();
 
-                    getActivity().startActivity(GameActivity.createIntent(getActivity(), game.getDate()));
+                    getActivity().startActivity(GameActivity.createIntent(getActivity(), game));
                 } else {
                     Toast.makeText(getContext(), "Course Name cannot be blank.", Toast.LENGTH_LONG)
                             .show();

@@ -1,9 +1,14 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.models;
 
 import com.orm.SugarRecord;
+import com.orm.query.Condition;
+import com.orm.query.Select;
+import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by taylorstubbs on 2/24/17.
@@ -11,10 +16,9 @@ import java.util.Date;
 
 public class Game extends SugarRecord {
     Boolean inProgress;
-    Date date;
+    String date;
     String courseName;
     int totalHoleNumber;
-    ArrayList<Hole> holes;
 
     public Game() {
         //has to be blank
@@ -22,22 +26,24 @@ public class Game extends SugarRecord {
 
     public Game(String cName, int tHoleNumber) {
         inProgress = true;
-        holes = new ArrayList<>();
-        date = new Date();
+        date = (new Date()).toString();
         courseName = cName;
         totalHoleNumber = tHoleNumber;
 
+        //save to create id
+        this.save();
+
         //Initialize holes
         for (int i = 0; i < totalHoleNumber; i++) {
-            Hole hole = new Hole(i);
-            holes.add(hole);
+            Hole hole = new Hole(this.getId(), i);
+            hole.save();
         }
 
         //Save game
-        this.save();
+        this.saveHoles();
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -49,8 +55,8 @@ public class Game extends SugarRecord {
         return totalHoleNumber;
     }
 
-    public ArrayList<Hole> getHoles() {
-        return holes;
+    public List<Hole> getHoles() {
+        return Select.from(Hole.class).where(Condition.prop("game").eq(getId())).list();
     }
 
     public void setCourseName(String courseName) {
@@ -67,5 +73,12 @@ public class Game extends SugarRecord {
 
     public void setInProgress(Boolean inProgress) {
         this.inProgress = inProgress;
+    }
+
+    public void saveHoles() {
+        List<Hole> holes = getHoles();
+        for (int i = 0; i < holes.size(); i++) {
+            SQLUtil.getHoleFromId(holes.get(i).getId()).save();
+        }
     }
 }
