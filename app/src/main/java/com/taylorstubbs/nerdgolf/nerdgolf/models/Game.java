@@ -51,4 +51,12 @@ public class Game extends SugarRecord {
     public void setTotalHoleNumber(int totalHoleNumber) {
         this.totalHoleNumber = totalHoleNumber;
     }
+
+    public Boolean getInProgress() {
+        return inProgress;
+    }
+
+    public void setInProgress(Boolean inProgress) {
+        this.inProgress = inProgress;
+    }
 }
