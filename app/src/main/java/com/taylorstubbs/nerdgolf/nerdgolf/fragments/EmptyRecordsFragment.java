@@ -9,20 +9,23 @@ import android.view.ViewGroup;
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
 
 /**
- * Created by taylorstubbs on 2/27/17.
+ * Fragment to inform users they don't have any games.
  */
 
 public class EmptyRecordsFragment extends Fragment {
     private static final String TAG = "EmptyRecordsFragment";
 
+    /**
+     * Create new instance of fragment.
+     *
+     * @return  the fragment
+     */
     public static EmptyRecordsFragment newInstance() {
         return new EmptyRecordsFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveState) {
-        View view = inflater.inflate(R.layout.fragment_records_empty, container, false);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_records_empty, container, false);
     }
 }

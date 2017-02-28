@@ -3,7 +3,7 @@ package com.taylorstubbs.nerdgolf.nerdgolf;
 import com.orm.SugarApp;
 
 /**
- * Created by taylorstubbs on 2/25/17.
+ * The app.
  */
 
 public class App extends SugarApp {

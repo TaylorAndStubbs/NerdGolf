@@ -11,12 +11,18 @@ import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
 /**
- * Created by taylorstubbs on 2/24/17.
+ * Host the MainFragment.
  */
 
 public class MainActivity extends SingleFragmentActivity {
     private static final String TAG = "MainActivity";
 
+    /**
+     * Create a new intent for the Activity.
+     *
+     * @param context   the context of the activity
+     * @return  the intent
+     */
     public static Intent newIntent(Context context) {
         return new Intent(context, MainActivity.class);
     }

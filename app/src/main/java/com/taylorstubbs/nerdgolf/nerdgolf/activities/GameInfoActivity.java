@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import com.taylorstubbs.nerdgolf.nerdgolf.fragments.GameInfoFragment;
 
 /**
- * Created by taylorstubbs on 2/24/17.
+ * Host the GameInfoFragment.
  */
 
 public class GameInfoActivity extends SingleFragmentActivity {

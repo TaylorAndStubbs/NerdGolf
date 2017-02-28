@@ -19,6 +19,11 @@ public class HoleHolder extends RecyclerView.ViewHolder {
     private TextView mParView;
     private TextView mScoreView;
 
+    /**
+     * Constructor.
+     *
+     * @param view  the view that this holder is holding
+     */
     public HoleHolder(View view) {
         super(view);
 
@@ -27,6 +32,11 @@ public class HoleHolder extends RecyclerView.ViewHolder {
         mScoreView = (TextView) view.findViewById(R.id.score);
     }
 
+    /**
+     * Bind hole to widgets and set text.
+     *
+     * @param hole  the hole to bind
+     */
     public void bindHole(Hole hole) {
         mHoleNumView.setText(String.valueOf(hole.getHoleNum()));
         mParView.setText((String.valueOf(hole.getPar())));

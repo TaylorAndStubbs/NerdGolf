@@ -64,6 +64,11 @@ public enum SQLUtil {;
         return Select.from(Hole.class).where(Condition.prop("game").eq(id)).list();
     }
 
+    /**
+     * Get the game with inProgress set to true
+     *
+     * @return  the game
+     */
     public static Game getGameInProgress() {
         try {
             return Select.from(Game.class).where(Condition.prop("in_Progress")
@@ -74,6 +79,11 @@ public enum SQLUtil {;
         }
     }
 
+    /**
+     * Get all games ordered by the id.
+     *
+     * @return the games
+     */
     public static List<Game> getAllGames() {
         List<Game> games = Select.from(Game.class).orderBy("id").list();
         Collections.reverse(games);

@@ -33,6 +33,11 @@ public class GameInfoFragment extends Fragment {
     private Button mStartButton;
     private Button mCancelButton;
 
+    /**
+     * New instance of fragment.
+     *
+     * @return the fragment
+     */
     public static GameInfoFragment newInstance() {
         return new GameInfoFragment();
     }

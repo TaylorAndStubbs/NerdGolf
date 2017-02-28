@@ -39,6 +39,12 @@ public class HoleFragment extends Fragment {
     private Button mIncreaseScoreButton;
     private Button mDecreaseScoreButton;
 
+    /**
+     * Create new instance of fragment.
+     *
+     * @param hole  the hole to display
+     * @return the fragment
+     */
     public static HoleFragment newInstance(Hole hole) {
         HoleFragment holeFragment = new HoleFragment();
         Bundle args = new Bundle();

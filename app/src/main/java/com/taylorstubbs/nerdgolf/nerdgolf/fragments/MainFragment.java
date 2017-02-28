@@ -27,6 +27,11 @@ public class MainFragment extends Fragment {
     private Button mNewGameButton;
     private Button mRecordsbutton;
 
+    /**
+     * Create new instance of fragment.
+     *
+     * @return the fragment
+     */
     public static MainFragment newInstance() {
         return new MainFragment();
     }

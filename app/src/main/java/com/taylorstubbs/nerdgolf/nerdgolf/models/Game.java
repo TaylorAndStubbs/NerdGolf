@@ -20,6 +20,12 @@ public class Game extends SugarRecord {
         //has to be blank
     }
 
+    /**
+     * Constructor.
+     *
+     * @param cName         the name of the course
+     * @param tHoleNumber   the total number of holes
+     */
     public Game(String cName, int tHoleNumber) {
         inProgress = true;
         date = (new Date()).toString();
@@ -71,6 +77,9 @@ public class Game extends SugarRecord {
         return SQLUtil.getAllHolesFromGame(getId());
     }
 
+    /**
+     * Save all holes associated with game.
+     */
     public void saveHoles() {
         List<Hole> holes = getHoles();
         for (int i = 0; i < holes.size(); i++) {
@@ -78,6 +87,9 @@ public class Game extends SugarRecord {
         }
     }
 
+    /**
+     * Delete all holes associated with game.
+     */
     public void deleteHoles() {
         List<Hole> holes = getHoles();
         for (int i = 0; i < holes.size(); i++) {

@@ -8,12 +8,18 @@ import android.support.v4.app.FragmentManager;
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
 
 /**
- * Created by taylorstubbs on 2/27/17.
+ * Utility for working with fragments.
  */
 
 public enum FragmentUtil {;
     private static final String TAG = "FragmentUtil";
 
+    /**
+     * Replace a fragment with another fragment.
+     *
+     * @param fragmentActivity  the activity hosting the fragment
+     * @param fragment          the fragment to replace existing fragment with
+     */
     public static void replaceFragment(FragmentActivity fragmentActivity, Fragment fragment) {
         FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
 

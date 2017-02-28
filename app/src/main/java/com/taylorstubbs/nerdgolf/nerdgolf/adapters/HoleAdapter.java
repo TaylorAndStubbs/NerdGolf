@@ -22,6 +22,12 @@ public class HoleAdapter extends RecyclerView.Adapter<HoleHolder> {
     private List<Hole> mHoles;
     private Context mContext;
 
+    /**
+     * Constructor.
+     *
+     * @param context   the context of the activity the adapter is in
+     * @param holes     the list of holes to adapt
+     */
     public HoleAdapter(Context context, List<Hole> holes) {
         mContext = context;
         mHoles = holes;

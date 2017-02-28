@@ -13,16 +13,18 @@ import com.taylorstubbs.nerdgolf.nerdgolf.R;
 
 public abstract class SingleFragmentActivity extends FragmentActivity {
     private static final String TAG = "SingleFragmentActivity";
-    protected abstract Fragment createFragment();
 
-    protected int getLayoutResId() {
-        return R.layout.activity_fragment;
-    }
+    /**
+     * Create the fragment to host.
+     *
+     * @return  the fragment
+     */
+    protected abstract Fragment createFragment();
 
     @Override
     protected void onCreate(Bundle saveState) {
         super.onCreate(saveState);
-        setContentView(getLayoutResId());
+        setContentView(R.layout.activity_fragment);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);

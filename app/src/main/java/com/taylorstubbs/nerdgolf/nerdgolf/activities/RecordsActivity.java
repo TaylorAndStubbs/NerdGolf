@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by taylorstubbs on 2/24/17.
+ * An activity that controls displaying RecordFragments.
  */
 
 public class RecordsActivity extends SingleFragmentActivity implements RecordFragment.RecordFragmentCallbacks {
@@ -54,8 +54,7 @@ public class RecordsActivity extends SingleFragmentActivity implements RecordFra
         if (mGames.size() - 1 == 0) {
             FragmentUtil.replaceFragment(this, EmptyRecordsFragment.newInstance());
         } else {
-            //TODO figure out why this works with +2 and not +1
-            if (mGames.size() >= getGameIndexFromId(game.getId()) + 2) {
+            if (isLastGameInList(game)) {
                 changeGame(game, 1);
             } else {
                 changeGame(game, -1);
@@ -67,6 +66,12 @@ public class RecordsActivity extends SingleFragmentActivity implements RecordFra
         mGames = SQLUtil.getAllGames();
     }
 
+    /**
+     * Get the index of the game from the list of games
+     *
+     * @param id    the id of the game
+     * @return the index
+     */
     private int getGameIndexFromId(long id) {
         for (int i = 0; i < mGames.size(); i++) {
             Game game = mGames.get(i);
@@ -76,6 +81,16 @@ public class RecordsActivity extends SingleFragmentActivity implements RecordFra
         }
 
         return -1;
+    }
+
+    /**
+     * Determine if game is last in array of games.
+     *
+     * @param game  the game to check
+     * @return whether or not the game is the last in the list
+     */
+    private boolean isLastGameInList(Game game) {
+        return mGames.size() >= getGameIndexFromId(game.getId()) + 2;
     }
 
     /**
