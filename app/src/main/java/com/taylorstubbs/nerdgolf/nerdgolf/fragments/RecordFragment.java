@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,7 @@ public class RecordFragment extends Fragment {
     private List<Hole> mHoles;
     private int mTotalPar = 0;
     private int mTotalScore = 0;
+    private RecordFragmentCallbacks mCallbacks;
 
     private Button mDeleteButton;
     private Button mNextGameButton;
@@ -53,10 +55,15 @@ public class RecordFragment extends Fragment {
         return recordFragment;
     }
 
+    public interface RecordFragmentCallbacks {
+        void nextGame(Game game);
+        void prevGame(Game game);
+        void deleteGame(Game game);
+    }
+
     @Override
     public void onCreate(Bundle saveState) {
         super.onCreate(saveState);
-
         mGame = SQLUtil.getGameFromId(getArguments().getLong(ARGS_GAME_ID));
         mHoles = mGame.getHoles();
 
@@ -82,7 +89,21 @@ public class RecordFragment extends Fragment {
         mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
+                mCallbacks.deleteGame(mGame);
+            }
+        });
+
+        mNextGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallbacks.nextGame(mGame);
+            }
+        });
+
+        mPrevGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallbacks.prevGame(mGame);
             }
         });
 
@@ -92,6 +113,18 @@ public class RecordFragment extends Fragment {
         mTotalParView.setText(String.valueOf(mTotalPar));
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mCallbacks = (RecordFragmentCallbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 
     private void calculateTotal() {

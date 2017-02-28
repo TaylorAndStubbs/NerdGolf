@@ -9,6 +9,7 @@ import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Hole;
 
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -74,6 +75,9 @@ public enum SQLUtil {;
     }
 
     public static List<Game> getAllGames() {
-        return Select.from(Game.class).list();
+        List<Game> games = Select.from(Game.class).orderBy("id").list();
+        Collections.reverse(games);
+
+        return games;
     }
 }

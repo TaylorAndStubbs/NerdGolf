@@ -1,20 +1,94 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
+import com.taylorstubbs.nerdgolf.nerdgolf.fragments.EmptyRecordsFragment;
 import com.taylorstubbs.nerdgolf.nerdgolf.fragments.RecordFragment;
+import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
+import com.taylorstubbs.nerdgolf.nerdgolf.utils.FragmentUtil;
 import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by taylorstubbs on 2/24/17.
  */
 
-public class RecordsActivity extends SingleFragmentActivity {
+public class RecordsActivity extends SingleFragmentActivity implements RecordFragment.RecordFragmentCallbacks {
     private static final String TAG = "RecordsActivity";
+
+    List<Game> mGames;
+
+    @Override
+    public void onCreate(Bundle saveState) {
+        mGames = SQLUtil.getAllGames();
+
+        super.onCreate(saveState);
+    }
 
     @Override
     protected Fragment createFragment() {
-        //TEMP
-        return RecordFragment.newInstance(SQLUtil.getAllGames().get(0));
+        if (mGames.size() == 0) {
+            return EmptyRecordsFragment.newInstance();
+        }
+
+        return RecordFragment.newInstance(mGames.get(0));
+    }
+
+    @Override
+    public void nextGame(Game game) {
+        changeGame(game, 1);
+    }
+
+    @Override
+    public void prevGame(Game game) {
+        changeGame(game, -1);
+    }
+
+    @Override
+    public void deleteGame(Game game) {
+        if (mGames.size() - 1 == 0) {
+            FragmentUtil.replaceFragment(this, EmptyRecordsFragment.newInstance());
+        } else {
+            //TODO figure out why this works with +2 and not +1
+            if (mGames.size() >= getGameIndexFromId(game.getId()) + 2) {
+                changeGame(game, 1);
+            } else {
+                changeGame(game, -1);
+            }
+        }
+
+        game.deleteHoles();
+        game.delete();
+        mGames = SQLUtil.getAllGames();
+    }
+
+    private int getGameIndexFromId(long id) {
+        for (int i = 0; i < mGames.size(); i++) {
+            Game game = mGames.get(i);
+            if (game.getId() == id) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * Change the game.
+     *
+     * @param delta number to change index by
+     */
+    private void changeGame(Game game, int delta) {
+        try {
+            FragmentUtil.replaceFragment(RecordsActivity.this,
+                    RecordFragment.newInstance(mGames.get(getGameIndexFromId(game.getId()) + (delta))));
+        } catch (IndexOutOfBoundsException e) {
+            //Just easier to catch exception
+        }
     }
 }

@@ -80,12 +80,13 @@ public class HoleFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
-        if (!(context instanceof HoleFragmentCallbacks)) {
-            throw new IllegalStateException("Activity must implement HoleFragmentCallbacks");
-        }
-
         mCallbacks = (HoleFragmentCallbacks) context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
     }
 
     @Override

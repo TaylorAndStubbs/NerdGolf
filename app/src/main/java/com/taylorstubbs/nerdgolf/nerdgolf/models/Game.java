@@ -77,4 +77,11 @@ public class Game extends SugarRecord {
             SQLUtil.getHoleFromId(holes.get(i).getId()).save();
         }
     }
+
+    public void deleteHoles() {
+        List<Hole> holes = getHoles();
+        for (int i = 0; i < holes.size(); i++) {
+            holes.get(i).delete();
+        }
+    }
 }
