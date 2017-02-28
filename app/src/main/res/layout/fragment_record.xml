@@ -5,52 +5,50 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/hole"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="14"/>
-
-    <NumberPicker
-        android:id="@+id/par"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="3"/>
+        tools:text="Jan 1st 2017 3:27pm"/>
 
     <TextView
-        android:id="@+id/score"
+        android:id="@+id/course_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="3"/>
+        tools:text="May Simmons"/>
 
-    <Button
-        android:id="@+id/increase_score_button"
+    <TextView
+        android:id="@+id/total_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/increase_score_button_label"/>
+        tools:text="73"/>
 
-    <Button
-        android:id="@+id/decrease_score_button"
+    <TextView
+        android:id="@+id/total_par"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/decrease_score_button_label"/>
+        tools:text="94"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hole_list"
+        android:layout_width="match_parent"
+        android:layout_height="200px"/>
 
     <Button
-        android:id="@+id/next_hole_button"
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete_button_label" />
+
+    <Button
+        android:id="@+id/next_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next_button_label"/>
 
     <Button
-        android:id="@+id/prev_hole_button"
+        android:id="@+id/prev_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/prev_button_label"/>
-
-    <Button
-        android:id="@+id/finish_game_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finish_game_button_label"/>
 
 </LinearLayout>

@@ -2,7 +2,8 @@ package com.taylorstubbs.nerdgolf.nerdgolf.activities;
 
 import android.support.v4.app.Fragment;
 
-import com.taylorstubbs.nerdgolf.nerdgolf.fragments.RecordsFragment;
+import com.taylorstubbs.nerdgolf.nerdgolf.fragments.RecordFragment;
+import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
 /**
  * Created by taylorstubbs on 2/24/17.
@@ -13,6 +14,7 @@ public class RecordsActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return RecordsFragment.newInstance();
+        //TEMP
+        return RecordFragment.newInstance(SQLUtil.getAllGames().get(0));
     }
 }

@@ -72,4 +72,8 @@ public enum SQLUtil {;
             return null;
         }
     }
+
+    public static List<Game> getAllGames() {
+        return Select.from(Game.class).list();
+    }
 }
