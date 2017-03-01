@@ -32,7 +32,7 @@ public class RecordsActivity extends SingleFragmentActivity implements RecordFra
 
     @Override
     protected Fragment createFragment() {
-        if (mGames.size() == 0) {
+        if (mGames == null || mGames.size() == 0) {
             return EmptyRecordsFragment.newInstance();
         }
 

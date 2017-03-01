@@ -85,9 +85,15 @@ public enum SQLUtil {;
      * @return the games
      */
     public static List<Game> getAllGames() {
-        List<Game> games = Select.from(Game.class).orderBy("id").list();
-        Collections.reverse(games);
+        try {
+            List<Game> games = Select.from(Game.class).orderBy("id").list();
+            Collections.reverse(games);
 
-        return games;
+            return games;
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
