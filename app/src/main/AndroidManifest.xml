@@ -9,16 +9,20 @@
         android:theme="@style/AppTheme"
         android:name=".App">
 
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.GameInfoActivity"></activity>
-        <activity android:name=".activities.RecordsActivity"></activity>
-        <activity android:name=".activities.GameActivity"></activity>
+        <activity android:name=".activities.GameInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activities.RecordsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activities.GameActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

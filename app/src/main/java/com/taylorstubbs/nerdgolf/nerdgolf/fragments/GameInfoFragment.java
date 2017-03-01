@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
 import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameActivity;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
+import com.taylorstubbs.nerdgolf.nerdgolf.widgets.BiggerNumberPicker;
 
 /**
  * Creates the game object. User can set course name and number of holes.
@@ -29,9 +31,8 @@ public class GameInfoFragment extends Fragment {
 
     //inputs
     private EditText mCourseNameInput;
-    private NumberPicker mTotalNumberHolesInput;
+    private BiggerNumberPicker mTotalNumberHolesInput;
     private Button mStartButton;
-    private Button mCancelButton;
 
     /**
      * New instance of fragment.
@@ -56,10 +57,10 @@ public class GameInfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info_game, container, false);
 
         mCourseNameInput = (EditText) view.findViewById(R.id.course_name_input);
-        mTotalNumberHolesInput = (NumberPicker) view.findViewById(R.id.total_number_holes_input);
+        mTotalNumberHolesInput = (BiggerNumberPicker) view.findViewById(R.id.total_number_holes_input);
         mStartButton = (Button) view.findViewById(R.id.start_game_button);
-        mCancelButton = (Button) view.findViewById(R.id.cancel_new_game_button);
 
+        mCourseNameInput.setSingleLine();
         mCourseNameInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -89,13 +90,6 @@ public class GameInfoFragment extends Fragment {
                     Toast.makeText(getContext(), "Course Name cannot be blank.", Toast.LENGTH_LONG)
                             .show();
                 }
-            }
-        });
-
-        mCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().finish();
             }
         });
 

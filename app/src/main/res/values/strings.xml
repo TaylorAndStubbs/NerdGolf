@@ -13,4 +13,5 @@
     <string name="increase_score_button_label">Increase</string>
     <string name="decrease_score_button_label">Decrease</string>
     <string name="no_games_label">No Games</string>
+    <string name="me">By Taylor Stubbs</string>
 </resources>
