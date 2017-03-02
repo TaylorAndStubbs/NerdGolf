@@ -1,6 +1,7 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.taylorstubbs.nerdgolf.nerdgolf.R;
 import com.taylorstubbs.nerdgolf.nerdgolf.activities.GameActivity;
@@ -26,6 +28,7 @@ public class MainFragment extends Fragment {
 
     private Button mNewGameButton;
     private Button mRecordsbutton;
+    private LinearLayout mPortfolioLink;
 
     /**
      * Create new instance of fragment.
@@ -54,6 +57,14 @@ public class MainFragment extends Fragment {
 
         mNewGameButton = (Button) view.findViewById(R.id.new_game_button);
         mRecordsbutton = (Button) view.findViewById(R.id.records_button);
+        mPortfolioLink = (LinearLayout) view.findViewById(R.id.portfolio_link);
+
+        mPortfolioLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.taylorstubbs.com")));
+            }
+        });
 
         mRecordsbutton.setOnClickListener(new View.OnClickListener() {
             @Override
