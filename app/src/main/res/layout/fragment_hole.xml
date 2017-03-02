@@ -1,56 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/FragmentTheme">
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout">
+
+        <ImageButton
+            android:id="@+id/prev_hole_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SmallInverseButtonTheme"
+            android:src="@drawable/ic_keyboard_arrow_left_white_100px"
+            android:layout_toLeftOf="@+id/finish_game_button"
+            android:layout_toStartOf="@+id/finish_game_button" />
+
+        <Button
+            android:id="@+id/finish_game_button"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonTheme"
+            android:text="@string/finish_game_button_label"/>
+
+        <ImageButton
+            android:id="@+id/next_hole_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SmallInverseButtonTheme"
+            android:src="@drawable/ic_keyboard_arrow_right_white_100px"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:padding="0dp"
+            android:layout_toRightOf="@+id/finish_game_button"
+            android:layout_toEndOf="@+id/finish_game_button" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/score_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp">
+
+        <ImageButton
+            android:id="@+id/decrease_score_button"
+            style="@style/BigInverseButtonTheme"
+            android:src="@drawable/ic_remove_white_100px" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="150sp"
+            tools:text="3"/>
+
+        <ImageButton
+            android:id="@+id/increase_score_button"
+            style="@style/BigInverseButtonTheme"
+            android:src="@drawable/ic_add_white_100px" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_alignTop="@id/score_container"
+        android:layout_centerHorizontal="true"
+        android:text="@string/score"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/hole"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="14"/>
+        android:textSize="50sp"
+        tools:text="#14"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <NumberPicker
-        android:id="@+id/par"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="3"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/hole"
+        android:layout_centerHorizontal="true">
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="3"/>
+        <TextView
+            android:text="@string/par"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/increase_score_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/increase_score_button_label"/>
+        <LinearLayout
+            android:id="@+id/par_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    <Button
-        android:id="@+id/decrease_score_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/decrease_score_button_label"/>
+            <ImageButton
+                android:id="@+id/decrease_par_button"
+                style="@style/SmallInverseButtonTheme"
+                android:src="@drawable/ic_remove_white_40px" />
 
+            <TextView
+                android:id="@+id/par"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="50sp"
+                tools:text="3"/>
 
-    <Button
-        android:id="@+id/next_hole_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next_button_label"/>
+            <ImageButton
+                android:id="@+id/increase_par_button"
+                style="@style/SmallInverseButtonTheme"
+                android:src="@drawable/ic_add_white_40px" />
 
-    <Button
-        android:id="@+id/prev_hole_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/prev_button_label"/>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/finish_game_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finish_game_button_label"/>
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

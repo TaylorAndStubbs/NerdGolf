@@ -1,12 +1,14 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import com.taylorstubbs.nerdgolf.nerdgolf.R;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Hole;
 import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
+import com.taylorstubbs.nerdgolf.nerdgolf.widgets.BiggerNumberPicker;
 
 /**
  * Individual hole. User can set score, par, and navigate back and forth through the holes. User can
@@ -31,13 +34,15 @@ public class HoleFragment extends Fragment {
     private Game mGame;
 
     private TextView mHoleNumberView;
-    private NumberPicker mParView;
+    private TextView mParView;
     private TextView mScoreView;
-    private Button mNextHoleButton;
-    private Button mPrevHoleButton;
+    private ImageButton mNextHoleButton;
+    private ImageButton mPrevHoleButton;
     private Button mFinishGameButton;
-    private Button mIncreaseScoreButton;
-    private Button mDecreaseScoreButton;
+    private ImageButton mIncreaseParButton;
+    private ImageButton mDecreaseParButton;
+    private ImageButton mIncreaseScoreButton;
+    private ImageButton mDecreaseScoreButton;
 
     /**
      * Create new instance of fragment.
@@ -98,15 +103,18 @@ public class HoleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveState) {
         View view = inflater.inflate(R.layout.fragment_hole, container, false);
+        String score = "#" + String.valueOf(mHole.getHoleNum() + 1);
 
         mHoleNumberView = (TextView) view.findViewById(R.id.hole);
-        mParView = (NumberPicker) view.findViewById(R.id.par);
+        mParView = (TextView) view.findViewById(R.id.par);
         mScoreView = (TextView) view.findViewById(R.id.score);
-        mNextHoleButton = (Button) view.findViewById(R.id.next_hole_button);
-        mPrevHoleButton = (Button) view.findViewById(R.id.prev_hole_button);
+        mNextHoleButton = (ImageButton) view.findViewById(R.id.next_hole_button);
+        mPrevHoleButton = (ImageButton) view.findViewById(R.id.prev_hole_button);
         mFinishGameButton = (Button) view.findViewById(R.id.finish_game_button);
-        mIncreaseScoreButton = (Button) view.findViewById(R.id.increase_score_button);
-        mDecreaseScoreButton = (Button) view.findViewById(R.id.decrease_score_button);
+        mIncreaseScoreButton = (ImageButton) view.findViewById(R.id.increase_score_button);
+        mDecreaseScoreButton = (ImageButton) view.findViewById(R.id.decrease_score_button);
+        mIncreaseParButton = (ImageButton) view.findViewById(R.id.increase_par_button);
+        mDecreaseParButton = (ImageButton) view.findViewById(R.id.decrease_par_button);
 
         mNextHoleButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,15 +165,25 @@ public class HoleFragment extends Fragment {
             }
         });
 
-        mHoleNumberView.setText(String.valueOf(mHole.getHoleNum() + 1));
-        mParView.setMaxValue(9);
-        mParView.setMinValue(1);
-        mParView.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+        mIncreaseParButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                mHole.setPar(newVal);
+            public void onClick(View v) {
+                mHole.increasePar();
+                updateHoleInfo();
             }
         });
+
+        mDecreaseParButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mHole.getPar() > 1) {
+                    mHole.decreasePar();
+                    updateHoleInfo();
+                }
+            }
+        });
+
+        mHoleNumberView.setText(score);
 
         updateHoleInfo();
 
@@ -190,6 +208,6 @@ public class HoleFragment extends Fragment {
      */
     private void updateHoleInfo() {
         mScoreView.setText(String.valueOf(mHole.getScore()));
-        mParView.setValue(mHole.getPar());
+        mParView.setText(String.valueOf(mHole.getPar()));
     }
 }

@@ -10,8 +10,10 @@
     <string name="next_button_label">Next</string>
     <string name="prev_button_label">Prev</string>
     <string name="finish_game_button_label">Finish</string>
-    <string name="increase_score_button_label">Increase</string>
-    <string name="decrease_score_button_label">Decrease</string>
+    <string name="increase_score_button_label">+</string>
+    <string name="decrease_score_button_label">-</string>
     <string name="no_games_label">No Games</string>
     <string name="me">By Taylor Stubbs</string>
+    <string name="par">Par</string>
+    <string name="score">Score</string>
 </resources>

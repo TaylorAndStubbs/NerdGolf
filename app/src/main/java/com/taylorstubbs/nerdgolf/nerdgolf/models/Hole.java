@@ -62,4 +62,12 @@ public class Hole extends SugarRecord {
     public void decreaseScore() {
         setScore(getScore() - 1);
     }
+
+    public void increasePar() {
+        setPar(getPar() + 1);
+    }
+
+    public void decreasePar() {
+        setPar(getPar() - 1);
+    }
 }
