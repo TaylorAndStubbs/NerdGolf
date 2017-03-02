@@ -13,6 +13,6 @@ public class App extends SugarApp {
     @Override
     public void onCreate() {
         super.onCreate();
-        FontUtil.setDefaultFont(this, "MONOSPACE", "fonts/lato.ttf");
+        FontUtil.setDefaultFont(this, "MONOSPACE", "fonts/Lato.ttf");
     }
 }

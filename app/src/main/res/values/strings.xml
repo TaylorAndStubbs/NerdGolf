@@ -16,4 +16,5 @@
     <string name="me">By Taylor Stubbs</string>
     <string name="par">Par</string>
     <string name="score">Score</string>
+    <string name="slash">/</string>
 </resources>

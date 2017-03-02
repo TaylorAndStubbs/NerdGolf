@@ -45,6 +45,7 @@ public class HoleAdapter extends RecyclerView.Adapter<HoleHolder> {
     public void onBindViewHolder(HoleHolder holder, int position) {
         Hole hole = mHoles.get(position);
         holder.bindHole(hole);
+        holder.setBackgroundColor(position % 2);
     }
 
     @Override

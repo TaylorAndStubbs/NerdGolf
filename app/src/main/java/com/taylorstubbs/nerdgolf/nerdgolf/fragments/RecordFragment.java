@@ -1,6 +1,7 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.orm.query.Select;
@@ -16,8 +18,14 @@ import com.taylorstubbs.nerdgolf.nerdgolf.R;
 import com.taylorstubbs.nerdgolf.nerdgolf.adapters.HoleAdapter;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Game;
 import com.taylorstubbs.nerdgolf.nerdgolf.models.Hole;
+import com.taylorstubbs.nerdgolf.nerdgolf.utils.DateUtil;
 import com.taylorstubbs.nerdgolf.nerdgolf.utils.SQLUtil;
 
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,15 +40,17 @@ public class RecordFragment extends Fragment {
     private List<Hole> mHoles;
     private int mTotalPar = 0;
     private int mTotalScore = 0;
+    private int mFinalScore;
     private RecordFragmentCallbacks mCallbacks;
 
     private Button mDeleteButton;
-    private Button mNextGameButton;
-    private Button mPrevGameButton;
+    private ImageButton mNextGameButton;
+    private ImageButton mPrevGameButton;
     private TextView mDateView;
     private TextView mCourseNameView;
     private TextView mTotalScoreView;
     private TextView mTotalParView;
+    private TextView mFinalScoreView;
     private RecyclerView mHoleListView;
 
     /**
@@ -96,15 +106,17 @@ public class RecordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveState) {
         View view = inflater.inflate(R.layout.fragment_record, container, false);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd yyyy @ hh:mm");
 
-        mNextGameButton = (Button) view.findViewById(R.id.next_game);
-        mPrevGameButton = (Button) view.findViewById(R.id.prev_game);
-        mDeleteButton = (Button) view.findViewById(R.id.delete);
+        mNextGameButton = (ImageButton) view.findViewById(R.id.next_game);
+        mPrevGameButton = (ImageButton) view.findViewById(R.id.prev_game);
+        mDeleteButton = (Button) view.findViewById(R.id.delete_game_button);
         mDateView = (TextView) view.findViewById(R.id.date);
         mCourseNameView = (TextView) view.findViewById(R.id.course_name);
         mTotalScoreView = (TextView) view.findViewById(R.id.total_score);
         mTotalParView = (TextView) view.findViewById(R.id.total_par);
         mHoleListView = (RecyclerView) view.findViewById(R.id.hole_list);
+        mFinalScoreView = (TextView) view.findViewById(R.id.final_score);
 
         mHoleListView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mHoleListView.setAdapter(new HoleAdapter(getContext(), mHoles));
@@ -130,10 +142,11 @@ public class RecordFragment extends Fragment {
             }
         });
 
-        mDateView.setText(mGame.getDate());
+        mDateView.setText(simpleDateFormat.format(DateUtil.createDate(mGame.getDate())));
         mCourseNameView.setText(mGame.getCourseName());
         mTotalScoreView.setText(String.valueOf(mTotalScore));
         mTotalParView.setText(String.valueOf(mTotalPar));
+        mFinalScoreView.setText(formatFinalScore(mFinalScore));
 
         return view;
     }
@@ -158,6 +171,17 @@ public class RecordFragment extends Fragment {
             Hole hole = mHoles.get(i);
             mTotalScore += hole.getScore();
             mTotalPar += hole.getPar();
+
+            mFinalScore = mTotalScore - mTotalPar;
         }
+    }
+
+    private String formatFinalScore(int finalScore) {
+        String formattedFinalScore = String.valueOf(finalScore);
+        if (finalScore > 0) {
+            formattedFinalScore = "+" + formattedFinalScore;
+        }
+
+        return formattedFinalScore;
     }
 }

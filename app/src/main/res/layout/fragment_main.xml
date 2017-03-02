@@ -42,8 +42,8 @@
 
         <ImageView
             android:src="@drawable/baboon"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -53,6 +53,7 @@
                 android:layout_centerVertical="true"
                 android:textAlignment="center"
                 android:text="@string/me"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView" />

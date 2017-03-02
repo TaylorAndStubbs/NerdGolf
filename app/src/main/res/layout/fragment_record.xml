@@ -1,54 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/FragmentTheme">
 
-    <TextView
-        android:id="@+id/date"
+    <LinearLayout
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Jan 1st 2017 3:27pm"/>
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/course_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="May Simmons"/>
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Jan 1st 2017 3:27pm"
+            android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/total_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="73"/>
+        <TextView
+            android:id="@+id/course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="May Simmons"/>
 
-    <TextView
-        android:id="@+id/total_par"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="94"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/hole_list"
+            <TextView
+                android:id="@+id/total_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="73"/>
+
+            <TextView
+                android:text="@string/slash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/total_par"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="94"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:textSize="30sp"
+            android:id="@+id/final_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Hole #"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:text="Par"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_alignParentRight="true"
+                android:text="Score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/hole_list"
+            android:layout_width="150dp"
+            android:layout_height="300dp"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
-        android:layout_height="200px"/>
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delete_button_label" />
+        android:orientation="horizontal"
+        android:id="@+id/relativeLayout">
 
-    <Button
-        android:id="@+id/next_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next_button_label"/>
+        <ImageButton
+            android:id="@+id/prev_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SmallInverseButtonTheme"
+            android:src="@drawable/ic_keyboard_arrow_left_white_100px"
+            android:layout_toStartOf="@+id/delete_game_button"
+            android:layout_toLeftOf="@+id/delete_game_button" />
 
-    <Button
-        android:id="@+id/prev_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/prev_button_label"/>
+        <Button
+            android:id="@+id/delete_game_button"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ButtonTheme"
+            android:text="@string/delete_button_label"/>
 
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/next_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SmallInverseButtonTheme"
+            android:src="@drawable/ic_keyboard_arrow_right_white_100px"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:padding="0dp"
+            android:layout_toEndOf="@+id/delete_game_button"
+            android:layout_toRightOf="@+id/delete_game_button" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
