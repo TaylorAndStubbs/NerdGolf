@@ -1,9 +1,11 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -142,8 +144,19 @@ public class HoleFragment extends Fragment {
         mFinishGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mHole.save();
-                mCallbacks.finishGame();
+                new AlertDialog.Builder(getActivity())
+                        .setMessage("Are you sure you want to finish the game?")
+                        .setCancelable(true)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mHole.save();
+                                mCallbacks.finishGame();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show();
+
             }
         });
 

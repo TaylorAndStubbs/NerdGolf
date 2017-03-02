@@ -1,9 +1,11 @@
 package com.taylorstubbs.nerdgolf.nerdgolf.fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -124,7 +126,18 @@ public class RecordFragment extends Fragment {
         mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallbacks.deleteGame(mGame);
+                new AlertDialog.Builder(getActivity())
+                        .setCancelable(true)
+                        .setMessage("Are you sure you want to delete this game?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mCallbacks.deleteGame(mGame);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show();
+
             }
         });
 
